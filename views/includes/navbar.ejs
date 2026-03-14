@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand p-2" href="/listings">
+            <img src="/images/flogo.png" alt="Logo" width="50" height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link" href="/listings">Explore</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <form method="post" action="http://localhost:5500/listings/country" class="d-flex" role="search">
+                    <input class="form-control me-2 search-inp" name="country" type="search"
+                        placeholder="Search destination" aria-label="Search" />
+                    <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link me-3" href="/listings/new">Become a host</a>
+                <%if (!currentUser) { %>
+                    <b><a class="nav-link me-3" href="/signup"><i class="fa-solid fa-arrow-right-to-bracket fa-beat"
+                                style="color: #222222;"></i>&nbsp;&nbsp;Sign up</a></b>
+                    <b><a class="nav-link me-3" href="/login"><i class="fa-solid fa-user fa-shake"
+                                style="color: #222222;"></i>&nbsp;&nbsp;Login</a></b>
+                    <% } %>
+                        <% if (currentUser) { %>
+                            <b><a class="nav-link me-3" href="/logout">Logout&nbsp;&nbsp;<i
+                                        class="fa-solid fa-arrow-right-from-bracket fa-bounce"
+                                        style="color: #222222;"></i></a></b>
+                            <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

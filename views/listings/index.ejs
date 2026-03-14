@@ -1,0 +1,151 @@
+<% layout("layouts/boilerplate") %>
+
+    <body>
+        <nav class="navbar navbar-expand-lg mb-1">
+            <div id="filters" class="container-fluid">
+                <div class="tax-toggle navbar-brand">
+                    <div class="form-check-reverse form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                        <label class="form-check-label" id="label" for="switchCheckDefault">Display total after
+                            tax</label>
+                    </div>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filters</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/listings/filter/trending">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-fire-flame-curved"></i></div>
+                                        <p>Trending</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/listings/filter/room">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-bed"></i></div>
+                                        <p>Room</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/mountains">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-mountain"></i></div>
+                                        <p>Mountains</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/amazing pools">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-person-swimming"></i></div>
+                                        <p>Amazing Pools</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/camping">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-campground"></i></div>
+                                        <p>Camping</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/castle">
+                                    <div class="filter">
+                                        <div><i class="fa-regular fa-chess-rook"></i></div>
+                                        <p>Castle</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/boat">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-sailboat"></i></div>
+                                        <p>Boat</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/domes">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-igloo"></i></div>
+                                        <p>Domes</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/arctic">
+                                    <div class="filter">
+                                        <div><i class="fa-regular fa-snowflake"></i></div>
+                                        <p>Arctic</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/farms">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-tractor"></i></div>
+                                        <p>Farms</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/listings/filter/iconic cities">
+                                    <div class="filter">
+                                        <div><i class="fa-solid fa-tree-city"></i></div>
+                                        <p>Iconic Cities</p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-2">
+            <% for (let listing of allListing) { %>
+                <a href="/listings/<%= listing.id %>" class="listing-link">
+                    <div class="card col listing-card">
+                        <img src="<%= listing.image.url %>" style="height: 18rem;" class="card-img-top"
+                            alt="<%= listing.title %>">
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%= listing.title %>
+                                </b> <br>
+                                &#8377;<%= listing.price.toLocaleString("en-IN") %>/night
+                                    <i id="tax-info"> &nbsp; &nbsp; +18% GST</i>
+                            </p>
+
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>         
+    </body>
+    <script>
+        let taxSwitch = document.querySelector("#switchCheckDefault");
+        taxSwitch.addEventListener("click", (event) => {
+            let taxInfo = document.querySelectorAll("#tax-info");
+            for (const info of taxInfo) {
+                if (info.style.display == "inline")
+                    info.style.display = "none";
+                else
+                    info.style.display = "inline";
+            }
+        })
+    </script>

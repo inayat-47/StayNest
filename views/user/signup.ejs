@@ -1,0 +1,25 @@
+<% layout("layouts/boilerplate") %>
+
+    <div class="mt-3 row">
+        <div class="col-6 offset-3">
+            <h2>Sign Up to Staynest</h2>
+            <form action="/signup" method="post" novalidate class="needs-validation">
+                <div class="mt-5">
+                    <label class="form-label" for="username">Username</label>
+                    <input type="text" class="form-control login-signup-form" name="username" placeholder="Enter the username" required id="username">
+                    <div class="invalid-feedback">*Please Enter the Username</div>
+                </div>
+                <div class="mt-5">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-control login-signup-form" name="email" id="email" placeholder="Enter the Email" required>
+                    <div class="invalid-feedback">*Please Enter the Email</div>
+                </div>
+                <div class="mt-5">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" class="form-control login-signup-form" name="password" id="password" placeholder="Enter the Password" required>
+                    <div class="invalid-feedback">*Please Enter the Password</div>
+                </div><br><br>
+                <button class="btn btn-outline-success">Sign up</button>
+            </form>
+        </div>
+    </div>
