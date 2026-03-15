@@ -31,6 +31,7 @@ body {
 
 .search-inp {
     padding: 0.5rem 0.5rem 0.5rem 1rem;
+    width: 27rem;
     border-radius: 2rem;
 }
 
