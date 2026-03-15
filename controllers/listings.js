@@ -68,7 +68,7 @@ export let serachListing = async (request, response) => {
     if (!listings || listings.length < 1) {
         listings = await Listing.find({ location: { $regex: new RegExp(country, "i") } });
     }
-    else if (!listings || listings.length < 1) {
+    if (!listings || listings.length < 1) {
         request.flash("error", "No Listing Related to this country");
         return response.redirect('/listings');
     }
