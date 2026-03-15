@@ -28,8 +28,8 @@ main().then((result) => {
     console.log("Database Connection Successful");
 }).catch(error => console.log(error));
 async function main() {
-    await mongoose.connect(localDbUrl);
-    // await mongoose.connect(dbUrl);
+    // await mongoose.connect(localDbUrl);
+    await mongoose.connect(dbUrl);
 }
 
 app.set("view engine", "ejs");

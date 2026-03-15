@@ -64,7 +64,6 @@ export let destroyListing = async (request, response) => {
 
 export let serachListing = async (request, response) => {
     let { country } = request.body;
-    // console.log(country);
     let listings = await Listing.find({ country: { $regex: new RegExp(country, "i") } });
     if (!listings || listings.length < 1) {
         listings = await Listing.find({ location: { $regex: new RegExp(country, "i") } });
