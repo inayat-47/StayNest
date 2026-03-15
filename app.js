@@ -22,12 +22,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dbUrl = process.env.ATLAS_DB_URL;
+const localDbUrl = "mongodb://127.0.0.1:27017/staynest";
 
 main().then((result) => {
     console.log("Database Connection Successful");
 }).catch(error => console.log(error));
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(localDbUrl);
+    // await mongoose.connect(dbUrl);
 }
 
 app.set("view engine", "ejs");

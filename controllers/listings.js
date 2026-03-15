@@ -63,10 +63,11 @@ export let destroyListing = async (request, response) => {
 };
 
 export let serachListing = async (request, response) => {
-    let { country, country: location } = request.body;
+    let { country } = request.body;
+    // console.log(country);
     let listings = await Listing.find({ country: { $regex: new RegExp(country, "i") } });
     if (!listings || listings.length < 1) {
-        listings = await Listing.find({ location: { $regex: new RegExp(location, "i") } });
+        listings = await Listing.find({ location: { $regex: new RegExp(country, "i") } });
     }
     else if (!listings || listings.length < 1) {
         request.flash("error", "No Listing Related to this country");

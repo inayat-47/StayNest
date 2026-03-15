@@ -30,7 +30,7 @@ body {
 }
 
 .search-inp {
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
     border-radius: 2rem;
 }
 
@@ -173,8 +173,8 @@ textarea:focus {
     }
 }
 
-@media (max-width: 768px){
-    .review-card{
+@media (max-width: 768px) {
+    .review-card {
         width: 95%;
     }
 }

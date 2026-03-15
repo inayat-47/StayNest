@@ -1,42 +1,42 @@
 import express from "express";
 import wrapAsync from '../utils/wrapAsync.js';
-import {isLoggedIn, isOwner , validateListing} from '../middleware.js';
+import { isLoggedIn, isOwner, validateListing } from '../middleware.js';
 import * as listingController from '../controllers/listings.js';
 import multer from "multer";
-import {storage} from "../cloudConfig.js";
+import { storage } from "../cloudConfig.js";
 
-const upload = multer({storage});
-const router = express.Router();   
+const upload = multer({ storage });
+const router = express.Router();
 
 
 router.route("/")
-//  TO DISPLAY ALL THE LISTING
-.get(wrapAsync(listingController.index))
+    //  TO DISPLAY ALL THE LISTING
+    .get(wrapAsync(listingController.index))
 
-//  TO POST THE CREATED LISTING
-.post(isLoggedIn , validateListing , upload.single('image') , wrapAsync(listingController.createNewListing));
+    //  TO POST THE CREATED LISTING
+    .post(isLoggedIn, validateListing, upload.single('image'), wrapAsync(listingController.createNewListing));
 
 //  TO SERVE THE FORM FOR CREATING THE LISTING
-router.get("/new" , isLoggedIn , listingController.renderNewForm);
+router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 //  TO DISPLAY THE FORM TO EDIT THE LISTING
-router.get("/:id/edit" , isLoggedIn , isOwner , wrapAsync(listingController.renderEditForm));
+router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.renderEditForm));
 
-router.post("/country" , wrapAsync(listingController.serachListing));
+router.post("/country", wrapAsync(listingController.serachListing));
 
 router.route("/filter/:type")
     .get(wrapAsync(listingController.filterListing));
 
 router.route("/:id")
 
-//  TO DISPLAY THE UPDATED LISTING
-.put(isLoggedIn ,isOwner ,validateListing , upload.single('image') ,wrapAsync(listingController.updateListing))
+    //  TO DISPLAY THE UPDATED LISTING
+    .put(isLoggedIn, isOwner, validateListing, upload.single('image'), wrapAsync(listingController.updateListing))
 
-//  TO SHOW THE LISTING IN DETAIL
+    //  TO SHOW THE LISTING IN DETAIL
 
-.get(wrapAsync(listingController.showListing))
+    .get(wrapAsync(listingController.showListing))
 
-//  TO DELETE THE LISTING
-.delete(isLoggedIn , isOwner , wrapAsync(listingController.destroyListing));
+    //  TO DELETE THE LISTING
+    .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
 
 export default router;
