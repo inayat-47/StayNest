@@ -1,0 +1,46 @@
+<% layout("layouts/boilerplate") %>
+    <main class="container-fluid px-0">
+        <div class="row align-items-center m-0" style="min-height: calc(100vh - 5rem);">
+            <div class="col-lg-6 d-none d-lg-block p-0 m-0 login-signup overflow-hidden position-relative">
+                <img src="./images/login.jpg" alt="login-img" class="w-100 object-fit-cover"
+                    style="height: calc(100vh - 5rem); min-height: 600px;">
+                <div class="card-img-overlay custom-gradient w-100"></div>
+                <div class="position-absolute bottom-0 start-0 text-white p-5">
+                    <h2 class="fw-xl display-4">Welcome back to</h2>
+                    <h2 class="c-gold fst-italic fw-bolder display-3">STAYNÈST</h2>
+                    <p class="fs-5 fw-light">Continue your journey with us and discover your next exceptional
+                        destination.</p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center p-4 p-md-5">
+                <div class="w-100" style="max-width: 450px;">
+                    <a href="/" class="mb-4 d-inline-block text-decoration-none text-dark">
+                        <i class="fa-solid fa-arrow-left-long me-2"></i>Back to Home
+                    </a>
+                    <h1 class="mb-2 fw-bold">Sign In</h1>
+                    <p class="text-secondary mb-4">Access your exclusive bookings and tailored offers.</p>
+
+                    <form action="/login" method="post" novalidate class="needs-validation">
+                        <div class="mb-3">
+                            <label class="form-label text-uppercase small fw-bold" for="username">Username</label>
+                            <input type="text" class="form-control form-control-lg rounded-3" name="username"
+                                placeholder="Enter your username" required id="username">
+                            <div class="invalid-feedback">* Please enter your username</div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label text-uppercase small fw-bold" for="password">Password</label>
+                            <input type="password" class="form-control form-control-lg rounded-3" name="password"
+                                id="password" placeholder="Enter your password" required>
+                            <div class="invalid-feedback">* Please enter your password</div>
+                        </div>
+                        <button class="btn bg-col text-white w-100 py-3 rounded-4 fw-bold shadow-sm">Sign In</button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="mb-0">Don't have an account? <a href="/signup"
+                                class="c-gold text-decoration-none fw-bold">Create account now</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>

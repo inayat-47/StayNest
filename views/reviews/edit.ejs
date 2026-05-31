@@ -1,0 +1,43 @@
+<% layout("layouts/boilerplate") %>
+
+    <body>
+        <main class="container">
+            <div class="col-8 offset-1">
+                <h4>Guest Experiences</h4>
+
+                <form method="post" action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=PUT" novalidate
+                    class="needs-validation">
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <fieldset class="starability-slot">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0"
+                                <%=review.rating===0 ? 'checked' : '' %> aria-label="No rating" />
+                            <input type="radio" id="first-rate1" name="rating" value="1" <%=review.rating===1
+                                ? 'checked' : '' %> />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="rating" value="2" <%=review.rating===2
+                                ? 'checked' : '' %> />
+                            <label for="first-rate2" title="Not good">2 stars</label>
+                            <input type="radio" id="first-rate3" name="rating" value="3" <%=review.rating===3
+                                ? 'checked' : '' %> />
+                            <label for="first-rate3" title="Average">3 stars</label>
+                            <input type="radio" id="first-rate4" name="rating" value="4" <%=review.rating===4
+                                ? 'checked' : '' %> />
+                            <label for="first-rate4" title="Very good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="rating" value="5" <%=review.rating===5
+                                ? 'checked' : '' %> />
+                            <label for="first-rate5" title="Amazing">5 stars</label>
+                        </fieldset>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Comment</label>
+                        <textarea class="form-control" name="comment" id="comment" rows="2"
+                            required><%= review.comment %></textarea>
+                        <div class="invalid-feedback">*Cannot Submit Empty</div>
+                    </div>
+                    <button class="btn btn-dark form-btn">Edit review</button>
+                </form>
+            </div>
+            </div>
+        </main>
+    </body>

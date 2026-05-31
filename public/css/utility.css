@@ -1,0 +1,87 @@
+.d-flex {
+    display: flex !important;
+}
+
+.jc-center {
+    justify-content: center !important;
+}
+
+.jc-between {
+    justify-content: space-between !important;
+}
+
+.jc-around {
+    justify-content: space-around !important;
+}
+
+.jc-evenly {
+    justify-content: space-evenly !important;
+}
+
+.jc-start {
+    justify-content: flex-start !important;
+}
+
+.jc-end {
+    justify-content: flex-end !important;
+}
+
+.ai-center {
+    align-items: center !important;
+}
+
+.ai-between {
+    align-items: space-between !important;
+}
+
+.ai-around {
+    align-items: space-around !important;
+}
+
+.ai-evenly {
+    align-items: space-evenly !important;
+}
+
+.ai-start {
+    align-items: flex-start !important;
+}
+
+.ai-end {
+    align-items: flex-end !important;
+}
+
+.fd-c {
+    flex-direction: column !important;
+}
+
+.fs-small {
+    font-size: smaller !important;
+}
+
+.fs-s {
+    font-size: small !important;
+}
+
+/* .fs-xs {
+    font-size: x-small !important;
+} */
+
+.fs-xl {
+    font-size: xx-large !important;
+}
+
+.fs-xxl {
+    font-size: 4.5rem;
+}
+
+.fw-xl {
+    font-weight: 100 !important;
+}
+
+.ml-2 {
+    margin-left: 0.2rem !important;
+}
+
+.w-50 {
+    width: 50% !important;
+}
