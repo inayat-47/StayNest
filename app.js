@@ -22,8 +22,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dbUrl = process.env.ATLAS_DB_URL;
-const localDbUrl = "mongodb://127.0.0.1:27017/staynest";
-const secret = "thisIsSecret";
+// const localDbUrl = "mongodb://127.0.0.1:27017/staynest";
+// const secret = "thisIsSecret";
 
 main().then((result) => {
     console.log("Database Connection Successful");
@@ -66,7 +66,7 @@ store.on("error", () => {
 //     },
 // };
 
-// app.use(session(sessionOptions));
+app.use(session(sessionOptions));
 app.use(flash());
 
 app.use(passport.initialize());
