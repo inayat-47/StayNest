@@ -53,18 +53,18 @@ store.on("error", () => {
     console.log("Error in Mongo Session Store", err);
 });
 
-// const sessionOptions = {
-//     // store: store,
-//     secret: secret,
-//     // secret: process.env.SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {
-//         expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-//         maxAge: 7 * 24 * 60 * 60 * 1000,
-//         httpOnly: true,
-//     },
-// };
+const sessionOptions = {
+    store: store,
+    // secret: secret,
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    },
+};
 
 app.use(session(sessionOptions));
 app.use(flash());

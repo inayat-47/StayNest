@@ -5,9 +5,10 @@ import { timeAgo } from "../utils/timeAgo.js";
 
 export let home = async (request, response) => {
     let result = await Listing.find({});
-    let reviews = await Review.find({});
+    let reviews = await Review.find({}).populate("author");
     let rev = [];
-    while (rev.length < 3) {
+    let limit = Math.min(3, reviews.length);
+    while (rev.length < limit) {
         let curr = Math.floor(Math.random() * reviews.length);
         if (!rev.includes(curr)) rev.push(curr);
     }
@@ -15,12 +16,9 @@ export let home = async (request, response) => {
     for (let i of rev) {
         review.push(reviews[i]);
     }
-    // console.log(review);
     let author = [];
     for (let i of review) {
-        let curr = await User.findById(i.author._id);
-        // console.log(curr);
-        author.push(curr.username);
+        author.push(i.author ? i.author.username : "Anonymous");
     }
     response.render("./home.ejs", { allListing: result, review: review, author: author, timeAgo: timeAgo });
 }
