@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <%# if(currentUser) {%>
+                            <% if(currentUser) {%>
                                 <hr class="my-5">
                                 <div class="d-flex jc-between">
                                     <% if(listDetail.reviews.length> 0) {%>
@@ -75,7 +75,7 @@
                                                 </div>
                                                 <% } %>
                                 </div>
-                                <%# } %>
+                                <% } %>
                                     <% if(listDetail.reviews.length> 0) {%>
                                         <% for( let review of listDetail.reviews ) { %>
                                             <div class="review-card ms-auto my-3 col-12"
@@ -154,12 +154,14 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12">
-                    <a class="btn add-review-btn c-gold d-lg-none no-add-review d-block py-3 px-5 mb-2 rounded-4 add-review"
-                        data-listing="<%= listDetail.id %>"><i class="fa-solid fa-plus" style="color: gray ;"></i> Add
-                        review</a>
-                </div>
+                <% if(currentUser) {%>
+                    <div class="col-12">
+                        <a class="btn add-review-btn c-gold d-lg-none no-add-review d-block py-3 px-5 mb-2 rounded-4 add-review"
+                            data-listing="<%= listDetail.id %>"><i class="fa-solid fa-plus" style="color: gray ;"></i>
+                            Add
+                            review</a>
+                    </div>
+                    <% } %>
             </div>
         </main>
     </body>

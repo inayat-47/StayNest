@@ -93,6 +93,7 @@ app.all(/.*/, (request, response, next) => {
 
 app.use((error, request, response, next) => {
     let { status = 500, message = "Internal Server Error" } = error;
+    if (error.name == "CastError") message = "This data no longer exists";
     response.status(status).render("error.ejs", { message, status });
     // response.render(error);
 });

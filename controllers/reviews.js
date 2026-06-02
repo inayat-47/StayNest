@@ -3,7 +3,7 @@ import Review from "../models/reviews.js";
 
 export let newReview = async (request, response) => {
     let { id } = request.params;
-    console.log(id);
+    // console.log(id);
 
     let listing = await Listing.findById(id);
     let review = new Review(request.body);
@@ -25,7 +25,7 @@ export let editReview = async (request, response) => {
         request.flash("error", "This listing is no longer exists !!!");
         return response.redirect("/listings");
     }
-    console.log(findReview);
+    // console.log(findReview);
     response.render("./reviews/edit.ejs", { review: findReview, listing: findListing });
 };
 

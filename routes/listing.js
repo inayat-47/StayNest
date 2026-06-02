@@ -29,12 +29,12 @@ router.route("/filter/:type")
 
 router.route("/:id")
 
-    //  TO DISPLAY THE UPDATED LISTING
-    .put(isLoggedIn, isOwner, validateListing, upload.single('image'), wrapAsync(listingController.updateListing))
-
     //  TO SHOW THE LISTING IN DETAIL
 
     .get(wrapAsync(listingController.showListing))
+
+    //  TO DISPLAY THE UPDATED LISTING
+    .put(isLoggedIn, isOwner, validateListing, upload.single('image'), wrapAsync(listingController.updateListing))
 
     //  TO DELETE THE LISTING
     .delete(isLoggedIn, isOwner, wrapAsync(listingController.destroyListing));
