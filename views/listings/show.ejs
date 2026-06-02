@@ -61,16 +61,16 @@
                                 <div class="d-flex jc-between">
                                     <% if(listDetail.reviews.length> 0) {%>
                                         <h3 class="mb-3">Guest Experiences</h3><br>
-                                        <a class="btn add-review-btn c-gold form-btn d-none d-sm-block" id="add-review"
+                                        <a class="btn add-review-btn c-gold form-btn d-none d-sm-block add-review"
                                             data-listing="<%= listDetail.id %>"><i class="fa-solid fa-plus"
                                                 style="color: #c9a96e;"></i>
                                             Add review</a>
                                         <% } %>
                                             <% if(listDetail.reviews.length===0) { %>
                                                 <div class="col-12">
-                                                    <a class="btn add-review-btn c-gold no-add-review d-none d-lg-block py-3 px-5 mb-2 rounded-4"
-                                                        data-listing="<%= listDetail.id %>" id="add-review"><i
-                                                            class="fa-solid fa-plus" style="color: gray ;"></i> Add
+                                                    <a class="btn add-review-btn c-gold no-add-review d-none d-lg-block py-3 px-5 mb-2 rounded-4 add-review"
+                                                        data-listing="<%= listDetail.id %>"><i class="fa-solid fa-plus"
+                                                            style="color: gray ;"></i> Add
                                                         review</a>
                                                 </div>
                                                 <% } %>
@@ -156,9 +156,9 @@
                 </div>
 
                 <div class="col-12">
-                    <a class="btn add-review-btn c-gold d-lg-none no-add-review d-block py-3 px-5 mb-2 rounded-4"><i
-                            class="fa-solid fa-plus" style="color: gray ;" data-listing="<%= listDetail.id %>"></i>
-                        Add review</a>
+                    <a class="btn add-review-btn c-gold d-lg-none no-add-review d-block py-3 px-5 mb-2 rounded-4 add-review"
+                        data-listing="<%= listDetail.id %>"><i class="fa-solid fa-plus" style="color: gray ;"></i> Add
+                        review</a>
                 </div>
             </div>
         </main>

@@ -622,7 +622,7 @@ body.swal2-shown> :not(.swal2-container) {
 }
 
 .swal2-actions {
-    width: 91% !important;
+    width: 90% !important;
 }
 
 .fa-plus {
