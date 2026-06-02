@@ -1,4 +1,4 @@
-import express from "express";
+import express, { response } from "express";
 import wrapAsync from '../utils/wrapAsync.js';
 import Review from '../models/reviews.js';
 import { Listing } from '../models/listing.js';

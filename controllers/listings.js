@@ -1,6 +1,5 @@
 import { Listing } from "../models/listing.js";
 import Review from "../models/reviews.js";
-import User from "../models/user.js";
 import { timeAgo } from "../utils/timeAgo.js";
 
 export let home = async (request, response) => {
@@ -91,12 +90,13 @@ export let destroyListing = async (request, response) => {
 
 export let serachListing = async (request, response) => {
     let { country } = request.body;
+    if (country.length == 0) return response.redirect('/listings');
     let listings = await Listing.find({ country: { $regex: new RegExp(country, "i") } });
     if (!listings || listings.length < 1) {
         listings = await Listing.find({ location: { $regex: new RegExp(country, "i") } });
     }
     if (listings.length == 0) {
-        return response.render("./error.ejs", { message: "No Listing Related to this location" });
+        return response.render("./error.ejs", { message: "No Listing Related to this location", status: 404 });
     }
     response.render("./listings/index.ejs", { allListing: listings });
 };

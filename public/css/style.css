@@ -17,6 +17,14 @@ body {
     text-decoration: none;
 }
 
+.listing-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+}
 
 /* edit.ejs /listings AND show.ejs AND index.ejs */
 
@@ -578,17 +586,43 @@ textarea:focus {
     color: #b6965d;
 }
 
-.d-sm-none {
+.add-review-btn:active {
+    border-color: transparent !important;
+}
+
+/* show.ejs sweetalert delete */
+.bg-red-50 {
+    background-color: #fef2f2;
+}
+
+body.swal2-shown {
+    overflow: auto !important;
+    padding-right: 0 !important;
+}
+
+body.swal2-shown> :not(.swal2-container) {
+    filter: blur(4px);
+}
+
+.swal-btn {
+    width: 13rem !important;
+}
+
+.no-add-review {
     background-color: #f5f5f5;
     border: 1.5px dashed gray;
     color: gray;
     transition: all 250ms ease-in;
 }
 
-.d-sm-none:hover {
+.no-add-review:hover {
     border: 1.5px dashed #C9A96E !important;
     color: #C9A96E;
     background-color: #fff;
+}
+
+.swal2-actions {
+    width: 91% !important;
 }
 
 .fa-plus {

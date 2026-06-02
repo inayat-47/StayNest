@@ -22,8 +22,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dbUrl = process.env.ATLAS_DB_URL;
-// const localDbUrl = "mongodb://127.0.0.1:27017/staynest";
-// const secret = "thisIsSecret";
+const localDbUrl = "mongodb://127.0.0.1:27017/staynest";
+const secret = "thisIsSecret";
 
 main().then((result) => {
     console.log("Database Connection Successful");
@@ -93,7 +93,7 @@ app.all(/.*/, (request, response, next) => {
 
 app.use((error, request, response, next) => {
     let { status = 500, message = "Internal Server Error" } = error;
-    response.status(status).render("error.ejs", { message });
+    response.status(status).render("error.ejs", { message, status });
     // response.render(error);
 });
 

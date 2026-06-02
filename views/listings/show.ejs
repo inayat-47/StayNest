@@ -39,7 +39,8 @@
                                             <a class="ed-btn" href="/listings/<%= listDetail.id %>/edit"><i
                                                     class="fa-regular edit-btn fa-pen-to-square bg-white rounded-4 me-1 d-flex ai-cneter jc-center"></i></a>
                                             <form class="d-flex ai-start d-btn" method="post"
-                                                action="/listings/<%= listDetail.id %>/?_method=DELETE"><br>
+                                                action="/listings/<%= listDetail.id %>/?_method=DELETE"
+                                                id="delete-listing" data-title="<%= listDetail.title %>"><br>
                                                 <button class="border border-0"><i
                                                         class="fa-regular del-btn fa-trash-can bg-white rounded-4 d-flex ai-cneter jc-center"></i></button>
                                             </form>
@@ -55,74 +56,88 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <% if(listDetail.reviews.length> 0) {%>
+                            <%# if(currentUser) {%>
                                 <hr class="my-5">
                                 <div class="d-flex jc-between">
-                                    <h3 class="mb-3">Guest Experiences</h3><br>
-                                    <a href="/listings/<%= listDetail.id %>/reviews"
-                                        class="btn add-review-btn c-gold form-btn d-none d-sm-block"><i
-                                            class="fa-solid fa-plus" style="color: #c9a96e;"></i> Add
-                                        review</a>
-                                </div>
-                                <% for( let review of listDetail.reviews ) { %>
-                                    <div class="review-card ms-auto my-3 col-12"
-                                        style="background-color: #f5f5f5; border: none;">
-                                        <div class="d-flex jc-between">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
-                                                viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.2)"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                class="lucide lucide-quote text-gray-200 w-10 h-10 mb-4">
-                                                <path
-                                                    d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                                                </path>
-                                                <path
-                                                    d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
-                                                </path>
-                                            </svg>
-                                            <p class=" starability-result" data-rating="<%= review.rating %>">
-                                                Rated: 3 stars
-                                            </p>
-                                        </div>
-                                        <div class="infos">
-                                            <p class="date-time">
-                                                <%= review.__v> 0 ? "Updated " +
-                                                    timeAgo(review.createdAt) :
-                                                    timeAgo(review.createdAt)
-                                                    %>
-                                            </p>
-                                            <p class="description fst-italic">
-                                                <%= review.comment %>
-                                            </p>
-                                        </div>
-                                        <div
-                                            class="author fs-s d-flex ai-center jc-between w-100 position-relative bottom-0">
-                                            &horbar; <%=review.author.username %>
-                                                <% if(currentUser && currentUser._id.equals(review.author._id)) { %>
-                                                    <div class="d-flex jc-between">
-                                                        <div>
-
-                                                            <a class="btn review-btn fs-s"
-                                                                style="color : rgba(107, 114, 128, 1);"
-                                                                href="/listings/<%= listDetail.id %>/reviews/<%= review.id %>/edit"><i
-                                                                    class="fa-regular fa-pen-to-square"></i>
-                                                                Edit</a>
-                                                        </div>
-                                                        <form
-                                                            action="/listings/<%= listDetail.id %>/reviews/<%= review.id %>/?_method=DELETE"
-                                                            method="post" class="d-flex ai-center">
-
-                                                            <button class="btn review-btn fs-s p-0"
-                                                                style="color : rgba(107, 114, 128, 1);"><i
-                                                                    class="fa-regular fa-trash-can"></i>
-                                                                Delete</button>
-                                                        </form>
-                                                    </div>
-                                                    <% } %>
-                                        </div>
-
-                                    </div>
-                                    <% } %>
+                                    <% if(listDetail.reviews.length> 0) {%>
+                                        <h3 class="mb-3">Guest Experiences</h3><br>
+                                        <a class="btn add-review-btn c-gold form-btn d-none d-sm-block" id="add-review"
+                                            data-listing="<%= listDetail.id %>"><i class="fa-solid fa-plus"
+                                                style="color: #c9a96e;"></i>
+                                            Add review</a>
                                         <% } %>
+                                            <% if(listDetail.reviews.length===0) { %>
+                                                <div class="col-12">
+                                                    <a class="btn add-review-btn c-gold no-add-review d-none d-lg-block py-3 px-5 mb-2 rounded-4"
+                                                        data-listing="<%= listDetail.id %>" id="add-review"><i
+                                                            class="fa-solid fa-plus" style="color: gray ;"></i> Add
+                                                        review</a>
+                                                </div>
+                                                <% } %>
+                                </div>
+                                <%# } %>
+                                    <% if(listDetail.reviews.length> 0) {%>
+                                        <% for( let review of listDetail.reviews ) { %>
+                                            <div class="review-card ms-auto my-3 col-12"
+                                                style="background-color: #f5f5f5; border: none;">
+                                                <div class="d-flex jc-between">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40"
+                                                        viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.2)"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="lucide lucide-quote text-gray-200 w-10 h-10 mb-4">
+                                                        <path
+                                                            d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                                                        </path>
+                                                        <path
+                                                            d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z">
+                                                        </path>
+                                                    </svg>
+                                                    <p class=" starability-result" data-rating="<%= review.rating %>">
+                                                        Rated: 3 stars
+                                                    </p>
+                                                </div>
+                                                <div class="infos">
+                                                    <p class="date-time">
+                                                        <%= review.__v> 0 ? "Updated " +
+                                                            timeAgo(review.createdAt) :
+                                                            timeAgo(review.createdAt)
+                                                            %>
+                                                    </p>
+                                                    <p class="description fst-italic">
+                                                        <%= review.comment %>
+                                                    </p>
+                                                </div>
+                                                <div
+                                                    class="author fs-s d-flex ai-center jc-between w-100 position-relative bottom-0">
+                                                    &horbar; <%= review.author.username %>
+                                                        <% if(currentUser && currentUser._id.equals(review.author._id))
+                                                            { %>
+                                                            <div class="d-flex jc-between">
+                                                                <div>
+
+                                                                    <a class="btn review-btn fs-s"
+                                                                        style="color : rgba(107, 114, 128, 1);"
+                                                                        href="/listings/<%= listDetail.id %>/reviews/<%= review.id %>/edit"><i
+                                                                            class="fa-regular fa-pen-to-square"></i>
+                                                                        Edit</a>
+                                                                </div>
+                                                                <form
+                                                                    action="/listings/<%= listDetail.id %>/reviews/<%= review.id %>/?_method=DELETE"
+                                                                    method="post" class="d-flex ai-center">
+
+                                                                    <button class="btn review-btn fs-s p-0"
+                                                                        type="submit"
+                                                                        style="color : rgba(107, 114, 128, 1);"><i
+                                                                            class="fa-regular fa-trash-can"></i>
+                                                                        Delete</button>
+                                                                </form>
+                                                            </div>
+                                                            <% } %>
+                                                </div>
+
+                                            </div>
+                                            <% } %>
+                                                <% } %>
                         </div>
                     </div>
 
@@ -139,10 +154,11 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-12">
-                    <a href="/listings/<%= listDetail.id %>/reviews"
-                        class="btn add-review-btn c-gold d-sm-none d-block py-3 px-5 mb-2 rounded-4"><i
-                            class="fa-solid fa-plus" style="color: gray ;"></i> Add review</a>
+                    <a class="btn add-review-btn c-gold d-lg-none no-add-review d-block py-3 px-5 mb-2 rounded-4"><i
+                            class="fa-solid fa-plus" style="color: gray ;" data-listing="<%= listDetail.id %>"></i>
+                        Add review</a>
                 </div>
             </div>
         </main>

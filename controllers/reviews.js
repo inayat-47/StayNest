@@ -1,9 +1,9 @@
-import { response } from "express";
 import { Listing } from "../models/listing.js";
 import Review from "../models/reviews.js";
 
 export let newReview = async (request, response) => {
     let { id } = request.params;
+    console.log(id);
 
     let listing = await Listing.findById(id);
     let review = new Review(request.body);

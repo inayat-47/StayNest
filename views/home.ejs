@@ -57,8 +57,7 @@
                 <div class="container">
                     <div class="row justify-content-evenly mb-5 pb-4">
                         <% let arr=[] %>
-                            <% let limit = Math.min(3, allListing.length); %>
-                            <% while(arr.length < limit) {%>
+                            <% while(arr.length < 3) {%>
                                 <% let curr=Math.floor(Math.random() * allListing.length); %>
                                     <% if(!arr.includes(curr)) arr.push(curr); %>
                                         <% } %>
@@ -124,61 +123,57 @@
                     </div>
                     <div class="container">
                         <div class="row justify-content-evenly pb-5">
-                            <% 
-                            let a = [];
-                            if (allListing.length >= 32) {
-                                a = [29, 30, 31];
-                            } else if (allListing.length >= 3) {
-                                a = [0, 1, 2];
-                            } else {
-                                for (let i = 0; i < allListing.length; i++) {
-                                    a.push(i);
-                                }
-                            }
-                            %>
-                                <% for( let i of a ) { %>
-                                                    <div class="card col-lg-3 col-md-5 col-10 property-card m-2"
-                                                        style="width: 25rem; background-color: #fff ;">
-                                                        <div class="wrap-img overflow-hidden">
-                                                            <img src="<%= allListing[i].image.url %>"
-                                                                class="card-img-top c-img"
-                                                                alt="<%= allListing[i].title %>">
-                                                        </div>
-                                                        <div class="card-body m-4 home-card">
-                                                            <div class="mb-3  fs-small ai-start">
-                                                                <h5 class="card-title fw-bold">
-                                                                    <%= allListing[i].title %>
-                                                                </h5>
-                                                                <p class="card-text fw-lighter ac-card-details"
-                                                                    style="color: gray;">
-                                                                    <%= allListing[i].description %>
-                                                                </p>
+                            <% let a=[] %>
+                                <% let limit=Math.min(3, allListing.length); %>
+                                    <% while(a.length < limit) {%>
+                                        <% let curr=Math.floor(Math.random() * allListing.length); %>
+                                            <% if(!a.includes(curr)) a.push(curr); %>
+                                                <% } %>
+                                                    <% for( let i of a ) { %>
+                                                        <div class="card col-lg-3 col-md-5 col-10 property-card m-2"
+                                                            style="width: 25rem; background-color: #fff ;">
+                                                            <div class="wrap-img overflow-hidden">
+                                                                <img src="<%= allListing[i].image.url %>"
+                                                                    class="card-img-top c-img"
+                                                                    alt="<%= allListing[i].title %>">
                                                             </div>
-                                                            <hr class="my-3" style="color: gray;">
-                                                            <div class="d-flex jc-between ai-center">
-                                                                <p class="card-text fs-small text-uppercase"><br>
-                                                                    <b class="fs-6">&#8377; <%= allListing[i].price %>
-                                                                            </b> /
-                                                                    night
-                                                                </p>
-                                                                <div
-                                                                    class="text-end details d-flex ai-center text-end c-gold fs-s">
-                                                                    <a href="/listings/<%= allListing[i].id %>"
-                                                                        class="text-decoration-none c-gold fs-s fs-6"
-                                                                        style="border: none;">Details</a>
-                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                        height="18" viewBox="0 0 24 24" fill="none"
-                                                                        stroke="currentColor" stroke-width="2"
-                                                                        stroke-linecap="round" stroke-linejoin="round"
-                                                                        class="arrow lucide lucide-arrow-right w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform">
-                                                                        <path d="M5 12h14"></path>
-                                                                        <path d="m12 5 7 7-7 7"></path>
-                                                                    </svg>
+                                                            <div class="card-body m-4 home-card">
+                                                                <div class="mb-3  fs-small ai-start">
+                                                                    <h5 class="card-title fw-bold">
+                                                                        <%= allListing[i].title %>
+                                                                    </h5>
+                                                                    <p class="card-text fw-lighter ac-card-details"
+                                                                        style="color: gray;">
+                                                                        <%= allListing[i].description %>
+                                                                    </p>
+                                                                </div>
+                                                                <hr class="my-3" style="color: gray;">
+                                                                <div class="d-flex jc-between ai-center">
+                                                                    <p class="card-text fs-small text-uppercase"><br>
+                                                                        <b class="fs-6">&#8377; <%= allListing[i].price
+                                                                                %>
+                                                                        </b> /
+                                                                        night
+                                                                    </p>
+                                                                    <div
+                                                                        class="text-end details d-flex ai-center text-end c-gold fs-s">
+                                                                        <a href="/listings/<%= allListing[i].id %>"
+                                                                            class="text-decoration-none c-gold fs-s fs-6"
+                                                                            style="border: none;">Details</a>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="18" viewBox="0 0 24 24"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="arrow lucide lucide-arrow-right w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform">
+                                                                            <path d="M5 12h14"></path>
+                                                                            <path d="m12 5 7 7-7 7"></path>
+                                                                        </svg>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <% } %>
+                                                        <% } %>
                         </div>
                     </div>
                 </section>
