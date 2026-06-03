@@ -29,8 +29,8 @@ main().then((result) => {
     console.log("Database Connection Successful");
 }).catch(error => console.log(error));
 async function main() {
-    await mongoose.connect(localDbUrl);
-    // await mongoose.connect(dbUrl);
+    // await mongoose.connect(localDbUrl);
+    await mongoose.connect(dbUrl);
 }
 
 app.set("view engine", "ejs");
@@ -41,22 +41,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.engine("ejs", ejsMate);
 
-// const store = MongoStore.create({
-//     mongoUrl: dbUrl,
-//     crypto: {
-//         secret: process.env.SECRET,
-//     },
-//     touchAfter: 24 * 3600,
-// });
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: process.env.SECRET,
+    },
+    touchAfter: 24 * 3600,
+});
 
-// store.on("error", () => {
-//     console.log("Error in Mongo Session Store", err);
-// });
+store.on("error", () => {
+    console.log("Error in Mongo Session Store", err);
+});
 
 const sessionOptions = {
-    // store: store,
-    secret: secret,
-    // secret: process.env.SECRET,
+    store: store,
+    // secret: secret,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
