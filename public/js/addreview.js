@@ -6,6 +6,7 @@ addReviewBtn.forEach(btn => {
     btn.addEventListener("click", (e) => {
         Swal.fire({
             title: `<h5 class="fw-bold text-black text-start mb-4">Add Review</h5></br><p class="fs-6 fw-bold text-black text-start">${"your rating".toUpperCase()}</p>`,
+
             html: `<form method="post" action="/listings/${btn.dataset.listing}/reviews" novalidate class="needs-validation">
                         <div class="mb-3">
                             <fieldset class="starability-slot">
@@ -35,6 +36,7 @@ addReviewBtn.forEach(btn => {
             showCancelButton: true,
             showConfirmButton: false,
             reverseButtons: true,
+
             didOpen: () => {
                 const form = Swal.getPopup().querySelector('form');
 
@@ -47,10 +49,12 @@ addReviewBtn.forEach(btn => {
                     form.classList.add('was-validated');
                 });
             },
+
             customClass: {
                 popup: 'rounded-4 ',
                 cancelButton: 'btn btn-outline-secondary w-100 rounded-4 px-5 py-3',
             },
+
             buttonsStyling: false,
         });
     });
