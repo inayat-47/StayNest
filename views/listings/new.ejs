@@ -2,58 +2,81 @@
 
     <body>
         <main class="container">
-            <br>
-            <h1 id="heading">Creating a new list</h1>
             <div class="row mt-2">
-                <div class="col-8 offset-2">
-                    <br>
-                    <form method="post" action="/listings" novalidate class="needs-validation"
-                        enctype="multipart/form-data">
-                        <div class="mb-1">
-                            <label class="form-label" for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title"
-                                placeholder="Enter the title" required>
-                            <div class="invalid-feedback">*Please Enter the Title</div>
-                        </div>
-                        <br><br>
-                        <div class="mb-1">
-                            <label class="form-label" for="description">Description</label>
-                            <textarea name="description" class="form-control" id="description"
-                                placeholder="Enter the description" required></textarea>
-                            <div class="invalid-feedback">*Please Enter the Description</div>
-                        </div>
-                        <br><br>
-                        <div class="mb-1">
-                            <label class="form-label" for="image">Upload Image</label>
-                            <input type="file" class="form-control" name="image" id="image"
-                                placeholder="Enter the image" required>
-                            <div class="invalid-feedback">*Upload atleast single Image</div>
-                        </div>
-                        <br><br>
-                        <div class="row">
-                            <div class="mb-1 col-md-4">
-                                <label class="form-label" for="price">Price</label>
-                                <input type="text" class="form-control" id="price" name="price"
-                                    placeholder="Enter the Price" required>
-                                <div class="invalid-feedback">*Please Enter the Price</div>
+                <div class="col-lg-8 offset-lg-2 col-xl-6 offset-xl-3 col-md-10 offset-md-1 col-sm-12">
+                    <a href="/listings" class="mt-3 mb-3 show-left-arrow btn border border-0"><i
+                            class="fa-solid left-arrow fa-arrow-left-long me-2">&nbsp;&nbsp;</i>Back</a>
+                    <div class="px-5 py-5 bg-light border border-2 border-secondary-subtle rounded-4">
+                        <p class="fs-1 fw-xl mb-0">List Your Property</p>
+                        <p class="fs-small">Join our curated portfolio of exceptional stays around the globe.</p>
+                        <br>
+                        <h6>Basic Information</h6>
+                        <br>
+
+                        <form method="post" action="/listings" novalidate class="needs-validation"
+                            enctype="multipart/form-data">
+                            <div class="mb-1">
+                                <label class="form-label" for="title">Property Title</label>
+                                <input type="text" class="form-control" name="title" id="title"
+                                    placeholder="e.g. The Palace" required>
+                                <div class="invalid-feedback">*Please Enter the Title</div>
                             </div>
-                            <div class="mb-1 col-md-8">
-                                <label class="form-label" for="location">Location</label>
-                                <input type="text" class="form-control" id="location" name="location"
-                                    placeholder="Enter the location" required>
-                                <div class="invalid-feedback">*Please Enter the Location</div>
+                            <br>
+                            <div class="mb-1">
+                                <label class="form-label" for="description">Description</label>
+                                <textarea name="description" class="form-control" id="description"
+                                    placeholder="Describe the unique features and experiences..." required></textarea>
+                                <div class="invalid-feedback">*Please Enter the Description</div>
                             </div>
-                        </div>
-                        <br><br>
-                        <div class="mb-1">
-                            <label class="form-label" for="country">Country</label>
-                            <input type="text" class="form-control" name="country" id="country"
-                                placeholder="Enter the Country" required>
-                            <div class="invalid-feedback">*Please Enter the Country name</div>
-                        </div>
-                        <br><br>
-                        <button class="btn btn-dark form-btn">Create</button>
-                    </form>
+                            <br>
+                            <div class="row">
+                                <div class="mb-1 col-md-4">
+                                    <label class="form-label" for="price">Price</label>
+                                    <input type="text" class="form-control" id="price" name="price"
+                                        placeholder="e.g. 4000" required>
+                                    <div class="invalid-feedback">*Please Enter the Price</div>
+                                </div>
+                                <div class="mb-1 col-md-8">
+                                    <label class="form-label" for="location">Location</label>
+                                    <input type="text" class="form-control" id="location" name="location"
+                                        placeholder="e.g. Delhi" required>
+                                    <div class="invalid-feedback">*Please Enter the Location</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="mb-1">
+                                <label class="form-label" for="country">Country</label>
+                                <input type="text" class="form-control" name="country" id="country"
+                                    placeholder="e.g. India" required>
+                                <div class="invalid-feedback">*Please Enter the Country name</div>
+                            </div>
+                            <br>
+                            <div class="mb-1">
+                                <label class="form-label" for="image">Property Gallery</label><br>
+                                <input type="file" class="form-control" name="image" id="image"
+                                    placeholder="Enter the image" hidden required>
+                                <label for="image" class="d-block text-center file-btn">
+                                    <div class="w-100 bg-white border border-4 border-light-subtle py-5 rounded-4"
+                                        style="border-style: dashed !important;">
+                                        <div class="d-inline-block bg-light rounded-circle border-bottom border-2 border-light-subtle file-icon"
+                                            style="height: 4rem; width: 4rem; line-height: 4rem;">
+                                            <i class="fa-solid fa-arrow-up-from-bracket c-gold fs-3"></i>
+                                        </div>
+                                        <p class="mt-3 mb-0 fw-bold">Click to upload your image</p>
+                                        <p class="fs-s text-secondary">PNG, JPG, or JPEG</p>
+                                    </div>
+                                </label>
+                                <div class="invalid-feedback">*Upload atleast single Image</div>
+                            </div>
+                            <br>
+                            <div class="row w-100 mx-auto">
+                                <a href="/listings"
+                                    class="btn btn-outline-secondary my-2 my-lg-0 py-2 col-lg-4 offset-lg-3 col-sm-12 rounded-4">Cancel</a>
+                                <button
+                                    class="btn btn-dark form-btn col-lg-4 offset-lg-1 col-sm-12 py-2 rounded-4">Create</button>
+                            </div>
+                        </form>
+                    </div>
                     <br><br>
                 </div>
             </div>

@@ -500,6 +500,22 @@ textarea:focus {
     text-align: center;
 }
 
+#image::-webkit-file-upload-button {
+    display: none;
+}
+
+.file-icon {
+    transition: all ease-in-out 500ms;
+}
+
+.file-btn:hover {
+    cursor: pointer;
+
+    .file-icon {
+        transform: scale(1.2);
+    }
+}
+
 /* login.ejs AND signup.ejs */
 
 .login-signup-form:focus {
