@@ -17,8 +17,8 @@ import User from './models/user.js';
 import { error } from 'console';
 import { createAvatar } from "@dicebear/core";
 import { initials } from "@dicebear/collection";
-import dns from 'dns';
-dns.setServers(['8.8.8.8', '8.8.4.4']); // Google public DNS
+// import dns from 'dns';
+// dns.setServers(['8.8.8.8', '8.8.4.4']); // Google public DNS
 
 const port = 5500;
 const app = express();
