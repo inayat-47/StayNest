@@ -4,13 +4,17 @@ export let renderSignupForm = (request, response) => {
     response.render("user/signup.ejs");
 };
 
+export let profilePage = (request, response) => {
+    response.render("user/profile.ejs");
+}
+
 export let signup = async (request, response) => {
     try {
         let { username, email, password } = request.body;
         let newUser = new User({ username, email });
         let registeredUser = await User.register(newUser, password);
-        request.login(registeredUser ,(error) => {
-            if(error)
+        request.login(registeredUser, (error) => {
+            if (error)
                 return next();
             request.flash("success", "Sign Up Successful");
             response.redirect("/listings");
@@ -31,12 +35,12 @@ export let login = async (request, response) => {
     response.redirect(url);
 };
 
-export let logout = (request , response , next) => {
+export let logout = (request, response, next) => {
     request.logout((error) => {
-        if(error){
+        if (error) {
             return next();
         }
-        request.flash("success" , "You are logged out!!!");
+        request.flash("success", "You are logged out!!!");
         response.redirect("/listings");
     })
 };

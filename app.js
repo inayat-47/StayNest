@@ -15,6 +15,10 @@ import passport, { Passport } from 'passport';
 import LocalStrategy from 'passport-local';
 import User from './models/user.js';
 import { error } from 'console';
+import { createAvatar } from "@dicebear/core";
+import { initials } from "@dicebear/collection";
+import dns from 'dns';
+dns.setServers(['8.8.8.8', '8.8.4.4']); // Google public DNS
 
 const port = 5500;
 const app = express();
@@ -79,6 +83,23 @@ app.use((request, response, next) => {
     response.locals.error = request.flash("error");
     response.locals.success = request.flash("success");
     response.locals.currentUser = request.user;
+    next();
+});
+
+app.use((request, response, next) => {
+    if (request.user) {
+        response.locals.avatar = createAvatar(initials, {
+            seed: request.user.username,
+            radius: 50,
+            size: 40,
+        }).toDataUri();
+
+        response.locals.currentUser = request.user;
+    } else {
+        response.locals.avatar = null;
+        response.locals.currentUser = null;
+    }
+
     next();
 });
 

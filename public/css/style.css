@@ -341,15 +341,24 @@ input.search-inp::-webkit-search-cancel-button {
     font-size: 2rem;
 }
 
+.navbar-toggler {
+    border: none !important;
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+.nav-link {
+    color: #0B1D26 !important;
+}
+
 .nav-btn {
     color: #f7f7f7 !important;
     border-radius: 20px;
     background-color: #C9A96E !important;
 }
 
-.nav-link {
-    color: #0B1D26 !important;
-}
 
 /* footer.ejs */
 
@@ -505,7 +514,7 @@ textarea:focus {
 }
 
 .file-icon {
-    transition: all ease-in-out 500ms;
+    transition: all ease-in-out 250ms;
 }
 
 .file-btn:hover {
@@ -639,6 +648,7 @@ body.swal2-shown> :not(.swal2-container) {
 
 .swal2-actions {
     width: 88% !important;
+    margin-top: 0.5rem !important;
 }
 
 .fa-plus {

@@ -8,6 +8,7 @@ import * as userController from "../controllers/user.js"
 const router = express.Router();
 
 router.get("/", wrapAsync(listingController.home));
+router.get("/profile", userController.profilePage);
 router.route("/signup")
     .get(userController.renderSignupForm)
     .post(wrapAsync(userController.signup));

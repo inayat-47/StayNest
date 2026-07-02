@@ -17,18 +17,6 @@ export let newReview = async (request, response) => {
     response.redirect(`/listings/${listing._id}`);
 };
 
-export let editReview = async (request, response) => {
-    let { id, reviewid } = request.params;
-    let findReview = await Review.findById(reviewid);
-    let findListing = await Listing.findById(id);
-    if (!findReview) {
-        request.flash("error", "This listing is no longer exists !!!");
-        return response.redirect("/listings");
-    }
-    // console.log(findReview);
-    response.render("./reviews/edit.ejs", { review: findReview, listing: findListing });
-};
-
 export let updateReview = async (request, response) => {
     let { id, reviewid } = request.params;
     let findReview = await Review.findByIdAndUpdate(reviewid, request.body, { runValidators: true });

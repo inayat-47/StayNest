@@ -115,10 +115,13 @@
                                                             <div class="d-flex jc-between">
                                                                 <div>
 
-                                                                    <a class="btn review-btn fs-s"
+                                                                    <a class="btn review-btn fs-s" id="edit-review"
                                                                         style="color : rgba(107, 114, 128, 1);"
-                                                                        href="/listings/<%= listDetail.id %>/reviews/<%= review.id %>/edit"><i
-                                                                            class="fa-regular fa-pen-to-square"></i>
+                                                                        data-listing="<%= listDetail.id %>"
+                                                                        data-review="<%= review.id %>"
+                                                                        data-rating="<%= review.rating %>"
+                                                                        data-comment="<%= review.comment %>">
+                                                                        <i class="fa-regular fa-pen-to-square"></i>
                                                                         Edit</a>
                                                                 </div>
                                                                 <form

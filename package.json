@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "22.18.0"
+    "node": "24.18.0"
   },
   "name": "major-project-staynest",
   "version": "1.0.0",
@@ -13,6 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@dicebear/collection": "^9.4.2",
+    "@dicebear/core": "^9.4.2",
     "cloudinary": "^2.7.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^6.0.0",
@@ -24,7 +26,7 @@
     "express-session": "^1.18.2",
     "joi": "^18.0.1",
     "method-override": "^3.0.0",
-    "mongodb": "^7.2.0",
+    "mongodb": "^7.4.0",
     "mongoose": "^8.18.0",
     "multer": "^2.0.2",
     "multer-storage-cloudinary": "^4.0.0",
