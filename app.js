@@ -23,7 +23,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const dbUrl = process.env.ATLAS_DB_URL;
+const dbUrl = process.env.MONGO_URI;
 const localDbUrl = "mongodb://127.0.0.1:27017/staynest";
 const secret = "thisIsSecret";
 
